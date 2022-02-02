@@ -1,5 +1,5 @@
 FROM hashicorp/terraform:latest
-#RUN apk update && apk add git
 WORKDIR /terraform/
-#CMD ["air", "-c", ".air.toml"]
-#CMD ["air"]
+ADD . /terraform/
+#元イメージのENTRYPOINTを無効化
+ENTRYPOINT []
