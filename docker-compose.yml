@@ -2,7 +2,6 @@ version: "3"
 services:
   tf:
     build: .
-    tty: true
     volumes:
       - ./:/terraform/
     env_file:
