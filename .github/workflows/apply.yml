@@ -31,8 +31,8 @@ jobs:
           terraform_version: 0.12.25
       - name: version chk
         run: |
-        aws --version
-        terraform --version
+          aws --version
+          terraform --version
       - name: terraform fmt
         run: terraform fmt -check
       - name: terraform apply
