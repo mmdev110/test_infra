@@ -85,7 +85,7 @@ jobs:
       - name: Print Plan
         run: |
           echo ${{steps.plan.outcome}}
-          echo ${{steps.plan.outputs}}
+          echo ${{steps.plan.outputs.stdout}}
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
         run: |
