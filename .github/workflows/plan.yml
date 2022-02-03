@@ -83,8 +83,8 @@ jobs:
               body: output
             })
       - name: Terraform Plan Status
-        if: steps.plan.outcome == 'failure'
-        run: exit 1
+        #if: steps.plan.outcome == 'failure'
+        run: echo ${{steps.plan.outcome}}
 
 #      - name: Terraform Apply
 #        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
