@@ -15,7 +15,6 @@ on:
 permissions:
   id-token: write
   contents: read # actions/checkout のために必要
-  issues: write
   pull-requests: write # PRにcreateCommentするために必要
 
 
