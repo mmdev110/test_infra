@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 
-permissions: write-all
+permissions:
   id-token: write
   contents: read # actions/checkout のために必要
   issues: write
