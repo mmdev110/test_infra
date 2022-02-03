@@ -72,7 +72,8 @@ jobs:
             #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
             <details><summary>Show Plan</summary>
             \`\`\`\n
-            ${process.env.PLAN}
+            terraform\n
+            ${{steps.plan.outputs.stdout}}
             \`\`\`
             </details>
             *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
@@ -82,14 +83,9 @@ jobs:
               repo: context.repo.repo,
               body: output
             })
-      - name: Print Plan
-        run: |
-          echo ${{steps.plan.outcome}}
-          echo ${{steps.plan.outputs.stdout}}
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
-        run: |
-          echo ${{steps.plan.outcome}}
+        run: exit 1
 
 
 #      - name: Terraform Apply
