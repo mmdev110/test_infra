@@ -82,10 +82,15 @@ jobs:
               repo: context.repo.repo,
               body: output
             })
+      - name: Print Plan
+        run: |
+          echo ${{steps.plan.outcome}}
+          echo ${{steps.plan.outputs}}
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
         run: |
           echo ${{steps.plan.outcome}}
+
 
 #      - name: Terraform Apply
 #        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
