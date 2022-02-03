@@ -13,8 +13,9 @@ on:
 
 
 permissions: write-all
-  #id-token: write
-  #contents: write # actions/checkout のために必要
+  id-token: write
+  contents: read # actions/checkout のために必要
+  issues: write
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
