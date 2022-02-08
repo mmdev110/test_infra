@@ -23,7 +23,6 @@ resource "aws_security_group" "default" {
     protocol    = "tcp"
     to_port     = 80
     //エラー出るので以下追記
-    cidr_blocks      = []
     ipv6_cidr_blocks = []
     security_groups  = []
     prefix_list_ids  = []
