@@ -10,23 +10,12 @@ provider "aws" {
   region = "ap-northeast-1"
 }
 
-variable "example_instance_type" {
-  default = "t3.micro"
-}
-resource "aws_instance" "example" {
-  ami           = "ami-03d79d440297083e3"
-  instance_type = var.example_instance_type
-  tags = {
-    Name = "example"
-  }
-  user_data = <<EOF
-  #! /bin/bash
-  yum install -y httpd
-  systemctl start httpd.service
-EOF
+module "web_server" {
+  source        = "./http_server"
+  instance_type = "t3.micro"
 }
 
-output "example_instance_id" {
-  value = aws_instance.example.id
+output "public_dns" {
+  value = module.web_server.public_dns
 
 }
