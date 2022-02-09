@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "alb_log" {
     }
   }
   //削除する時のみ以下のコメントを外してapplyする
-  //force_destroy = true
+  force_destroy = true
 }
 
 resource "aws_s3_bucket" "frontend" {
@@ -23,7 +23,7 @@ resource "aws_s3_bucket" "frontend" {
     }
   }
   //削除する時のみ以下のコメントを外してapplyする
-  //force_destroy = true
+  force_destroy = true
 }
 resource "aws_s3_bucket" "records" {
   bucket = "mmdev-test-records"
@@ -41,7 +41,7 @@ resource "aws_s3_bucket" "records" {
     }
   }
   //削除する時のみ以下のコメントを外してapplyする
-  //force_destroy = true
+  force_destroy = true
 }
 
 resource "aws_s3_bucket_policy" "alb_log" {
