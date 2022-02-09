@@ -3,6 +3,6 @@ services:
   tf:
     build: .
     volumes:
-      - ./:/terraform/
+      - ./:/src/
     env_file:
       - ./env/infra.env
