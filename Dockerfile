@@ -1,5 +1,5 @@
 FROM hashicorp/terraform:latest
-WORKDIR /terraform/
-ADD . /terraform/
+WORKDIR /src/
+ADD . /src/
 #元イメージのENTRYPOINTを無効化
 ENTRYPOINT []
