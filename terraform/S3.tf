@@ -54,8 +54,9 @@ data "aws_iam_policy_document" "alb_log" {
     actions   = ["s3:PutObject"]
     resources = ["arn:aws:s3:::${aws_s3_bucket.alb_log.id}/*"]
     principals {
-      type        = "AWS"
-      identifiers = ["138767642386"]
+      type = "AWS"
+      //582318560864 = ELB account id in ap-northeast-1
+      identifiers = ["582318560864"]
     }
   }
 }
