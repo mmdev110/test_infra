@@ -9,9 +9,9 @@ resource "aws_route53_record" "example" {
   name    = data.aws_route53_zone.example.name
   type    = "A"
   alias {
-    name                        = aws_lb.example.dns_name
-    zone_id                     = aws_lb.example.zone_id
-    evaluevaluate_target_health = true
+    name                   = aws_lb.example.dns_name
+    zone_id                = aws_lb.example.zone_id
+    evaluate_target_health = true
   }
 }
 
