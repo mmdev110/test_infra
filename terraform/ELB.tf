@@ -12,10 +12,10 @@ resource "aws_lb" "example" {
     bucket  = aws_s3_bucket.alb_log.id
     enabled = true
   }
-  security_group = [
-    module.http_sg.security_group.id,
-    module.https_sg.security_group.id,
-    module.http_redirect_sg.security_group.id,
+  security_groups = [
+    module.http_sg.security_group_id,
+    module.https_sg.security_group_id,
+    module.http_redirect_sg.security_group_id,
   ]
 }
 
@@ -54,8 +54,8 @@ resource "aws_lb_listener" "http" {
   protocol          = "HTTP"
 
   default_action {
-    type = "fixed_response"
-    fixedfixed_response {
+    type = "fixed-response"
+    fixed_response {
       content_type = "text/plain"
       message_body = "これはHTTPです"
       status_code  = "200"
