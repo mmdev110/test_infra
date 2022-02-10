@@ -38,6 +38,17 @@ resource "aws_ecs_service" "example" {
     ignore_changes = [task_definition]
   }
 }
+//fargate起動のために443ポートのアウトバウンド許可が必要
+//https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-tasks-pending-state/
+resource "aws_security_group_rule" "egress-fargate" {
+  type              = "egress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = module.nginx_sg.security_group_id
+}
+
 
 module "nginx_sg" {
   source      = "./security_group"
