@@ -37,6 +37,7 @@ resource "aws_cloudwatch_event_rule" "example_batch" {
 resource "aws_cloudwatch_event_target" "example_batch" {
   target_id = "example_batch"
   rule      = aws_cloudwatch_event_rule.example_batch.name
+  role_arn  = module.ecs_events_role.iam_role_arn
   arn       = aws_ecs_cluster.example.arn //対象のクラスター
 
   ecs_target {
