@@ -5,6 +5,7 @@ data "aws_iam_policy" "ecs_task_execution_role_policy" {
 
 data "aws_iam_policy_document" "ecs_task_execution" {
   source_json = data.aws_iam_policy.ecs_task_execution_role_policy.policy
+  //パラメータストアからの取得、復号を追加で許可
   statement {
     effect    = "Allow"
     actions   = ["ssm:GetParameters", "kms:Decrypt"]
