@@ -11,7 +11,7 @@ resource "aws_ecs_task_definition" "example_batch" {
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   container_definitions    = file("./batch_container_definitions.json")
-  execution_role           = module.ecs_task_execution_role.iam_role_arn
+  execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
 }
 
 //cloudwatchからECSを実行するためのロール
@@ -21,6 +21,7 @@ module "ecs_events_role" {
   identifier = "events.amazonaws.com"
   policy     = data.aws_iam_policy.ecs_events_role_policy.policy
 }
+
 //用意されてるポリシーを使用する
 data "aws_iam_policy" "ecs_events_role_policy" {
   arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceEventsRole"
@@ -44,7 +45,7 @@ resource "aws_cloudwatch_event_target" "example_batch" {
     task_definition_arn = aws_ecs_task_definition.example_batch.arn
     network_configuration {
       assign_public_ip = "false"
-      subnets          = [aws_subet.private_0.id]
+      subnets          = [aws_subnet.private_0.id]
     }
   }
 }
